@@ -1,0 +1,10 @@
+let CHOICE = int(3, 0) in
+let CAR = discrete(0.6, 0.3, 0.1) in 
+let MONTY =
+if CHOICE == CAR then discrete(0.0, 0.5, 0.5) else 
+if CAR == int(3, 1) then int(3, 2) else int(3, 1) in 
+(CAR != CHOICE)
+
+//CAR == CHOICE represents probability of winning if you STAY
+//CAR != CHOICE represents probability of winning if you SWITCH 
+
