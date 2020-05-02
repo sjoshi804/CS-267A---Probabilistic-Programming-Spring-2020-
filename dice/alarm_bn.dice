@@ -1,0 +1,13 @@
+let B = flip 0.001 in 
+let E = flip 0.002 in
+let A =  
+if E && B then flip 0.95 
+else if !E && B then flip 0.94
+else if E && !B then flip 0.29
+else flip 0.001 in
+let J = 
+if A then flip 0.90 else flip 0.05 in
+let M = 
+if A then flip 0.70 else flip 0.01 in 
+let _ = observe (!B && M) in 
+E
