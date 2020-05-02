@@ -1,0 +1,8 @@
+// Calculating the probability of (¬a ∨ c ∨ d) ∧ (b ∨ c ∨ ¬d ∨ e) ∧ (¬c ∨ d ∨ ¬e), with Pr(a) = 0.2,Pr(b) = 0.1,Pr(c) = 0.8,Pr(d) = 0.3,Pr(e) = 0.5
+
+let a = flip 0.2 in 
+let b = flip 0.1 in 
+let c = flip 0.8 in 
+let d = flip 0.3 in 
+let e = flip 0.5 in 
+((!a || c || d) && (b || c || !d || e) && (!c || d || !e))

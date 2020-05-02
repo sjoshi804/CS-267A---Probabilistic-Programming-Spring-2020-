@@ -1,0 +1,8 @@
+// Calculating the probability of (a∨b∨¬c)∧(b∨c∨d∨¬e)∧(¬b∨¬d∨e)∧(¬a∨¬b) with Pr(a) = 0.3,Pr(b) = 0.6,Pr(c) = 0.1,Pr(d) = 0.8,Pr(e) = 0.4a
+
+let a = flip 0.3 in 
+let b = flip 0.6 in 
+let c = flip 0.1 in 
+let d = flip 0.8 in 
+let e = flip 0.4 in 
+((a || b || !c) && (b || c || d || !e) && (!b || !d || e) && (!a || !b))
