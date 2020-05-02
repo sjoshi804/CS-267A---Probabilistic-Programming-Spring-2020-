@@ -1,0 +1,17 @@
+SAT 1: 
+Value   Probability
+true    0.561600
+false   0.438400
+SAT 2:
+Value   Probability
+true    0.665000
+false   0.335000
+Final compiled size: 15
+Pr(E or B | M & J) = 
+Value   Probability
+true    0.459664
+false   0.540336
+Pr(E | !B & M ) = 
+Value   Probability
+true    0.037894
+false   0.962106
