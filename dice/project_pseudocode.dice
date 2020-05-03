@@ -1,0 +1,8 @@
+let ACTION = discrete(0.25, 0.25, 0.25, 0.25) in 
+let OPTIMAL_NOW = flip exp(reward(ACTION, CURRENT_STATE)) 
+let _ = observe(OPTIMAL_NOW) in
+let NEXT_ACTION = discrete(0.25, 0.25, 0.25, 0.25) in 
+let NEXT_STATE = transition_dynamics(STATE, ACTION) in 
+let OPTIMAL_NEXT = flip exp(rewards(NEXT_ACTION, NEXT_STATE))
+let _observe(OPTIMAL_NEXT) in
+ACTION
