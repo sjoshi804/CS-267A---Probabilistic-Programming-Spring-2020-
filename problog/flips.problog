@@ -1,0 +1,13 @@
+%Probabilistic Facts
+0.5::flip(X).
+
+%Rules
+consecutive(M, N, C):- M>=0, N=C.
+consecutive(M, N, C):- M>0, flip(M), NEW_C is C+1, consecutive(M-1, N, NEW_C).
+consecutive(M, N, C):- M>0, \+flip(M), consecutive(M-1, N, 0).
+query_consecutive(M, N):- consecutive(M, N, 0).
+
+%Queries
+query(query_consecutive(5, 2)).
+query(query_consecutive(6, 5)).
+query(query_consecutive(10, 7)).
