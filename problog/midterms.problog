@@ -1,0 +1,32 @@
+%Get list module
+:- use_module(library(lists)).
+
+%Probabilistic Facts (using annotated disjunctions)
+0.25:: midterm_class(csgrad, 0); 0.70::midterm_class(csgrad, 1); 0.05::midterm_class(csgrad, 2).
+0.1:: midterm_class(csugrad, 0); 0.1::midterm_class(csugrad, 1); 0.8::midterm_class(csugrad, 2).
+0.01:: midterm_class(math, 0); 0.1::midterm_class(math, 1); 0.89::midterm_class(math, 2).
+0.49:: midterm_class(history, 0); 0.5::midterm_class(history, 1); 0.01::midterm_class(history, 2).
+0.7:: midterm_class(english, 0); 0.3::midterm_class(history, 1).
+
+%Rules
+
+%Sample without replacement
+sample(L, N, S):- permutation(S, T), sample_ordered(L, N, T).
+sample_ordered(_, 0, []).
+sample_ordered([X|L], N, [X|S]):- N>0, sample_now([X|L], N), N2 is N-1, sample_ordered(L, N2, S).
+sample_ordered([H|L], N, S):- N>0, \+ sample_now([H|L],N), sample_ordered(L, N, S).
+P::sample_now(L, N):- length(L, M), M >= N, P is N/M. 
+
+%Count number of midterms for classes in list
+midterm_count([], 0).
+midterm_count([H | T], M):- midterm_class(H, NUM_MIDTERMS), NEW_M is M - NUM_MIDTERMS, midterm_count(T, NEW_M).
+
+%Sample CLasses from List and Count How Many Midterms
+midterms(L, N, M):- length(CLASSES, N), sample(L, N, CLASSES), midterm_count(CLASSES, M).
+
+%Top Level Predicate
+atleast_midterms(L, N, M):- between(M,100,X), midterms(L, N, X).
+
+%Queries
+query(atleast_midterms([csgrad, csugrad, math, history, english], 2, 3)).
+query(atleast_midterms([csgrad, csugrad, math, history, english], 4, 7)).
